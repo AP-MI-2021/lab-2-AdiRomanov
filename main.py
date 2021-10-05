@@ -103,6 +103,14 @@ def test_is_superprime():
 
 
 def main():
+    """
+
+    Functia main contine meniul de accesare a problemelor
+    :return: NONE
+
+    """
+
+    
     while True:
         print("1. Verifica daca un numar este palindrom.")
         print("2. Verifica daca un numar este superprim.")
