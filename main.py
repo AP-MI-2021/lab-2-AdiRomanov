@@ -26,6 +26,11 @@ def test_is_palindrome():
     citim un numar de la tastatura
 
     """
+    assert is_palindrome(123) is False
+    assert is_palindrome(26) is False
+    assert is_palindrome(88) is True
+    assert is_palindrome(121) is True
+
     n = int(input("Introduceti numarul: "))
     if (is_palindrome(n)):
         print(f"Numarul {n} este palindrom.")
@@ -93,6 +98,8 @@ def test_is_superprime():
         citim un numar de la tastatura
 
     """
+    assert is_superprime(233) is True
+    assert is_superprime(237) is False
 
     n = int(input("Introduceti numarul: "))
 
@@ -100,6 +107,46 @@ def test_is_superprime():
         print(f"Numarul {n} este superprim.")
     else:
         print(f"Numarul {n} nu este superprim.")
+
+
+
+def get_largest_prime_below(n):
+    """
+    
+    :param n: int
+    :return: primul numar prim mai mic decat n
+    
+    Functia porneste de la n-1 si verifica daca numarul este prim cu ajutorul functiei is_prime(n)
+    Numerele sunt verificate in ordine descrescatoare
+    Daca nu exista programul returneaza 0
+    
+    """
+
+    nr = n-1
+    while nr > 0:
+        if is_prime(nr) == True:
+            return nr
+        nr = nr - 1
+    return 0
+
+
+def test_get_largest_prime_below():
+    """   
+    citim un numar de la tastatura
+    
+    """
+    assert get_largest_prime_below(20) == 19
+    assert get_largest_prime_below(25) != 19
+
+    n = int(input("Introduceti numarul: "))
+
+    rezultat = get_largest_prime_below(n)
+    if rezultat != 0:
+        print(f"Numarul {rezultat} este ultimul numar prim mai mic decat {n}.")
+    else:
+        print(f"Nu exista numar prim mai mic decat {n}.")
+
+
 
 
 def main():
@@ -110,10 +157,11 @@ def main():
 
     """
 
-    
+
     while True:
         print("1. Verifica daca un numar este palindrom.")
         print("2. Verifica daca un numar este superprim.")
+        print("3. Găsește ultimul număr prim mai mic decât numarul dat.")
         print("x. Iesire din program - exit")
 
         optiune = input("Introduceti optiunea dorita:")
@@ -122,6 +170,8 @@ def main():
             test_is_palindrome()
         elif optiune == '2':
             test_is_superprime()
+        elif optiune == '3':
+            test_get_largest_prime_below()
         elif optiune == 'x':
             break
         else:
